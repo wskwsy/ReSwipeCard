@@ -1,6 +1,5 @@
 package com.lin.cardlib;
 
-
 import com.lin.cardlib.utils.ReItemTouchHelper;
 
 import android.support.annotation.NonNull;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 
 /**
  * @author yuqirong
- *         modified by linchen
+ * modified by linchen
  */
 
 public class CardLayoutManager extends RecyclerView.LayoutManager {
@@ -20,6 +19,7 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
     private final RecyclerView mRecyclerView;
     private final ReItemTouchHelper mItemTouchHelper;
     private CardSetting mConfig;
+
 
     public CardLayoutManager(@NonNull ReItemTouchHelper itemTouchHelper, CardSetting cardConfig) {
         this.mRecyclerView = itemTouchHelper.getRecyclerView();
@@ -32,6 +32,7 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
     public RecyclerView.LayoutParams generateDefaultLayoutParams() {
         return new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
+
 
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
@@ -51,7 +52,7 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
                 int widthSpace = getWidth() - getDecoratedMeasuredWidth(layout);
                 int heightSpace = getHeight() - getDecoratedMeasuredHeight(layout);
                 layoutDecoratedWithMargins(layout,
-                        widthSpace / 2, heightSpace / 2,
+                        widthSpace / 2, mConfig.getDefaultMarginTop(),
                         widthSpace / 2 + getDecoratedMeasuredWidth(layout),
                         heightSpace / 2 + getDecoratedMeasuredHeight(layout));
 
@@ -60,17 +61,21 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
                     layout.setScaleY(1 - (position - 1) * defaultScale);
                     switch (mConfig.getStackDirection()) {
                         case ReItemTouchHelper.UP:
-                            layout.setTranslationY(-(position - 1) * layout.getMeasuredHeight() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationY(-(position - 1) * layout.getMeasuredHeight() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.RIGHT:
-                            layout.setTranslationX((position - 1) * layout.getMeasuredWidth() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationX((position - 1) * layout.getMeasuredWidth() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.LEFT:
-                            layout.setTranslationX(-(position - 1) * layout.getMeasuredWidth() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationX(-(position - 1) * layout.getMeasuredWidth() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.DOWN:
                         default:
-                            layout.setTranslationY((position - 1) * layout.getMeasuredHeight() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationY((position - 1) * layout.getMeasuredHeight() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                     }
                 } else if (position > 0) {
@@ -78,21 +83,25 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
                     layout.setScaleY(1 - position * defaultScale);
                     switch (mConfig.getStackDirection()) {
                         case ReItemTouchHelper.UP:
-                            layout.setTranslationY(-position * layout.getMeasuredHeight() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationY(-position * layout.getMeasuredHeight() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.RIGHT:
-                            layout.setTranslationX(position * layout.getMeasuredWidth() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationX(position * layout.getMeasuredWidth() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.LEFT:
-                            layout.setTranslationX(-position * layout.getMeasuredWidth() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationX(-position * layout.getMeasuredWidth() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.DOWN:
                         default:
-                            layout.setTranslationY(position * layout.getMeasuredHeight() / mConfig.getCardTranslateDistance());
+                            layout.setTranslationY(position * layout.getMeasuredHeight() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                     }
                 } else {
-                    ((SwipeTouchLayout)layout).setSwipeTouchListener(mSwipeTouchListener);
+                    ((SwipeTouchLayout) layout).setSwipeTouchListener(mSwipeTouchListener);
                 }
             }
         } else {
@@ -103,7 +112,9 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
                 measureChildWithMargins(view, 0, 0);
                 int widthSpace = getWidth() - getDecoratedMeasuredWidth(view);
                 int heightSpace = getHeight() - getDecoratedMeasuredHeight(view);
-                layoutDecoratedWithMargins(view, widthSpace / 2, heightSpace / 2,
+                layoutDecoratedWithMargins(view,
+                        widthSpace / 2,
+                        heightSpace / 2,
                         widthSpace / 2 + getDecoratedMeasuredWidth(view),
                         heightSpace / 2 + getDecoratedMeasuredHeight(view));
 
@@ -112,17 +123,21 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
                     view.setScaleY(1 - position * defaultScale);
                     switch (mConfig.getStackDirection()) {
                         case ReItemTouchHelper.UP:
-                            view.setTranslationY(-position * view.getMeasuredHeight() / mConfig.getCardTranslateDistance());
+                            view.setTranslationY(-position * view.getMeasuredHeight() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.RIGHT:
-                            view.setTranslationX(position * view.getMeasuredWidth() / mConfig.getCardTranslateDistance());
+                            view.setTranslationX(position * view.getMeasuredWidth() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.LEFT:
-                            view.setTranslationX(-position * view.getMeasuredWidth() / mConfig.getCardTranslateDistance());
+                            view.setTranslationX(-position * view.getMeasuredWidth() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                         case ReItemTouchHelper.DOWN:
                         default:
-                            view.setTranslationY(position * view.getMeasuredHeight() / mConfig.getCardTranslateDistance());
+                            view.setTranslationY(position * view.getMeasuredHeight() /
+                                    mConfig.getCardTranslateDistance());
                             break;
                     }
                 } else {
@@ -150,10 +165,12 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
                     touchDownY = event.getY();
                     return false;
                 case MotionEvent.ACTION_MOVE:
-                    boolean needSwipe = (Math.abs(touchDownX - event.getX()) >= ViewConfiguration.get(
-                            mRecyclerView.getContext()).getScaledTouchSlop())
-                            || (Math.abs(touchDownY - event.getY()) >= ViewConfiguration.get(
-                            mRecyclerView.getContext()).getScaledTouchSlop());
+                    boolean needSwipe = (Math.abs(touchDownX - event.getX()) >=
+                                                 ViewConfiguration.get(mRecyclerView.getContext())
+                                                                  .getScaledTouchSlop()) ||
+                            (Math.abs(touchDownY - event.getY()) >=
+                                     ViewConfiguration.get(mRecyclerView.getContext())
+                                                      .getScaledTouchSlop());
                     if (needSwipe) {
                         mItemTouchHelper.startSwipe(childViewHolder);
                         return false;
@@ -169,10 +186,12 @@ public class CardLayoutManager extends RecyclerView.LayoutManager {
 
         }
 
+
         @Override
         public void onTouchUp(MotionEvent event) {
 
         }
+
 
         @Override
         public void onTouchMove(View v, MotionEvent event) {

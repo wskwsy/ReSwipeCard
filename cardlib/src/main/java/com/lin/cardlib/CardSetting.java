@@ -1,6 +1,5 @@
 package com.lin.cardlib;
 
-
 import com.lin.cardlib.utils.ReItemTouchHelper;
 
 /**
@@ -16,57 +15,81 @@ public class CardSetting {
     public static final int DEFAULT_TRANSLATE = 14;
 
     public static final float DEFAULT_ROTATE_DEGREE = 15f;
+    public int DEFAULT_MARGIN_TOP = 15;
     private OnSwipeCardListener mListener;
+
+
+    public int getDefaultMarginTop() {
+        return DEFAULT_MARGIN_TOP;
+    }
+
+
+    public void setDefaultMarginTop(int defaultMarginTop) {
+        DEFAULT_MARGIN_TOP = defaultMarginTop;
+    }
+
 
     public int getShowCount() {
         return DEFAULT_SHOW_ITEM;
     }
 
+
     public float getCardScale() {
         return DEFAULT_SCALE;
     }
+
 
     public int getCardTranslateDistance() {
         return DEFAULT_TRANSLATE;
     }
 
+
     public float getCardRotateDegree() {
         return DEFAULT_ROTATE_DEGREE;
     }
 
+
     public int getSwipeDirection() {
-        return ReItemTouchHelper.LEFT | ReItemTouchHelper.RIGHT
-                | ReItemTouchHelper.UP | ReItemTouchHelper.DOWN;
+        return ReItemTouchHelper.LEFT | ReItemTouchHelper.RIGHT | ReItemTouchHelper.UP |
+                ReItemTouchHelper.DOWN;
     }
 
+
     public int couldSwipeOutDirection() {
-        return ReItemTouchHelper.LEFT | ReItemTouchHelper.RIGHT
-                | ReItemTouchHelper.UP | ReItemTouchHelper.DOWN;
+        return ReItemTouchHelper.LEFT | ReItemTouchHelper.RIGHT | ReItemTouchHelper.UP |
+                ReItemTouchHelper.DOWN;
     }
+
 
     public float getSwipeThreshold() {
         return 0.3f;
     }
 
+
     public boolean enableHardWare() {
         return true;
     }
+
 
     public boolean isLoopCard() {
         return true;
     }
 
+
     public int getSwipeOutAnimDuration() {
         return 400;
     }
+
 
     public int getStackDirection() {
         return ReItemTouchHelper.DOWN;
     }
 
+
     public void setSwipeListener(OnSwipeCardListener listener) {
         mListener = listener;
     }
+
 
     public OnSwipeCardListener getListener() {
         return mListener;
