@@ -44,6 +44,7 @@ public class NormalActivity extends AppCompatActivity implements View.OnClickLis
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         List<CardBean> list = CardMaker.initCards();
         CardSetting setting=new CardSetting();
+        setting.setLoopCard(false);
         setting.setSwipeListener(new OnSwipeCardListener<CardBean>() {
             @Override
             public void onSwiping(RecyclerView.ViewHolder viewHolder, float dx, float dy, int direction) {

@@ -16,6 +16,8 @@ public class CardSetting {
 
     public static final float DEFAULT_ROTATE_DEGREE = 15f;
     public int DEFAULT_MARGIN_TOP = 15;
+    public boolean isLoopCard  = false;
+
     private OnSwipeCardListener mListener;
 
 
@@ -71,8 +73,13 @@ public class CardSetting {
     }
 
 
+    public void setLoopCard(boolean loopCard) {
+        isLoopCard = loopCard;
+    }
+
+
     public boolean isLoopCard() {
-        return true;
+        return isLoopCard;
     }
 
 
