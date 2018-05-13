@@ -101,8 +101,7 @@ public class CardSetting {
 
 
     public int couldSwipeOutDirection() {
-        return ReItemTouchHelper.LEFT | ReItemTouchHelper.RIGHT | ReItemTouchHelper.UP |
-                ReItemTouchHelper.DOWN;
+        return couldSwipeOutDirection;
     }
 
 
