@@ -16,8 +16,16 @@ public class CardSetting {
 
     public static final float DEFAULT_ROTATE_DEGREE = 15f;
     public int DEFAULT_MARGIN_TOP = 15;
-    public boolean isLoopCard  = false;
+    public boolean isLoopCard = false;
+    public int showCount = 3;
+    public float cardScale = 0.1f;
+    public int translateDistance = 14;
+    public float cardRotateDegree = 15f;
+    public int couldSwipeOutDirection = ReItemTouchHelper.LEFT | ReItemTouchHelper.RIGHT |
+            ReItemTouchHelper.UP | ReItemTouchHelper.DOWN;
 
+    public int stackDirection;
+    public int swipeThreshold;
     private OnSwipeCardListener mListener;
 
 
@@ -31,8 +39,43 @@ public class CardSetting {
     }
 
 
+    public void setShowCount(int showCount) {
+        this.showCount = showCount;
+    }
+
+
     public int getShowCount() {
-        return DEFAULT_SHOW_ITEM;
+        return showCount;
+    }
+
+
+    public void setCardScale(float cardScale) {
+        this.cardScale = cardScale;
+    }
+
+
+    public void setTranslateDistance(int translateDistance) {
+        this.translateDistance = translateDistance;
+    }
+
+
+    public void setCardRotateDegree(float cardRotateDegree) {
+        this.cardRotateDegree = cardRotateDegree;
+    }
+
+
+    public void setCouldSwipeOutDirection(int couldSwipeOutDirection) {
+        this.couldSwipeOutDirection = couldSwipeOutDirection;
+    }
+
+
+    public void setStackDirection(int stackDirection) {
+        this.stackDirection = stackDirection;
+    }
+
+
+    public void setSwipeThreshold(int swipeThreshold) {
+        this.swipeThreshold = swipeThreshold;
     }
 
 
