@@ -26,6 +26,7 @@ public class CardSetting {
 
     public int stackDirection;
     public int swipeThreshold;
+    public int swipeOutAnimDuration = 400;
     private OnSwipeCardListener mListener;
 
 
@@ -125,8 +126,13 @@ public class CardSetting {
     }
 
 
+    public void setSwipeOutAnimDuration(int swipeOutAnimDuration) {
+        this.swipeOutAnimDuration = swipeOutAnimDuration;
+    }
+
+
     public int getSwipeOutAnimDuration() {
-        return 400;
+        return swipeOutAnimDuration;
     }
 
 
