@@ -32,6 +32,12 @@ public class SwipeTouchLayout extends FrameLayout {
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
         super.onInterceptTouchEvent(event);
         switch (event.getAction()) {
